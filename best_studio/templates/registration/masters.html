@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+  <ul>
+    {% for master in masters %}
+      <p>
+        {{ master }}
+      </p>
+    {% endfor %}
+  </ul>
+ {% endblock content %}
