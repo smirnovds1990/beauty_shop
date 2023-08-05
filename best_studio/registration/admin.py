@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Master, Procedure
+from .models import Customer, Master, Procedure
 
 
 class ProcedureAdmin(admin.ModelAdmin):
@@ -11,5 +11,10 @@ class MasterAdmin(admin.ModelAdmin):
     list_display = ('name', 'specialty')
 
 
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone_number')
+
+
 admin.site.register(Master, MasterAdmin)
 admin.site.register(Procedure, ProcedureAdmin)
+admin.site.register(Customer, CustomerAdmin)
