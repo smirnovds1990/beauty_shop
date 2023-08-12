@@ -52,7 +52,7 @@ class Procedure(models.Model):
 
 
 class Customer(models.Model):
-    'Модель клиента.'
+    """Модель клиента."""
     name = models.CharField(
         verbose_name='Клиент', max_length=200,
         help_text='Введите имя в формате <Имя Фамилия>'
@@ -61,14 +61,34 @@ class Customer(models.Model):
         help_text='Введите номер в формате +79801234567',
         verbose_name='Номер телефона'
     )
-    # procedure = models.ManyToManyField(
-    #     Procedure, verbose_name='Услуга', related_name='customers',
-    #     db_table='cutomer_procedures'
-    # )
 
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
+
+    def __str__(self):
+        return self.name
+
+
+class Record(models.Model):
+    """Запись на процедуру."""
+    date = models.DateTimeField(verbose_name='Дата и время')
+    master = models.ForeignKey(
+        Master, on_delete=models.CASCADE, verbose_name='Специалист',
+        related_name='records'
+    )
+    procedure = models.ForeignKey(
+        Procedure, on_delete=models.CASCADE, verbose_name='Услуга',
+        related_name='records'
+    )
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE, verbose_name='Клиент',
+        related_name='records'
+    )
+
+    class Meta:
+        verbose_name = 'Запись'
+        verbose_name_plural = 'Записи'
 
     def __str__(self):
         return self.name

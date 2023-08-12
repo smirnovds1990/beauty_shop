@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -128,3 +130,18 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION = 'RU'
+
+BOOTSTRAP_DATEPICKER_PLUS = {
+    "options": {
+        "locale": "ru",
+        "showClose": True,
+        "showClear": True,
+        "showTodayButton": True,
+        "allowInputToggle": False,
+    },
+    "variant_options": {
+        "datetime": {
+            "format": "MM/DD/YYYY HH:mm",
+        },
+    },
+}
